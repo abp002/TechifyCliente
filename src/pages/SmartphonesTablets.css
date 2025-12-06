@@ -1,0 +1,30 @@
+.st-page {
+  padding: 2rem 4vw;
+}
+
+.st-hero {
+  margin-bottom: 2rem;
+}
+
+.st-hero-text h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.st-hero-text p {
+  color: #4b5563;
+  max-width: 40rem;
+}
+
+.st-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .st-grid {
+    grid-template-columns: 1fr;
+  }
+}

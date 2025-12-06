@@ -1,0 +1,257 @@
+.header {
+  --header-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem; /* horizontal padding only, height fixed */
+  height: var(--header-height);
+  background: #0b1120;
+  color: #f9fafb;
+  gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed; /* fixed so it stays visible */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  min-width: 160px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  height: 40px;
+  overflow: hidden;
+}
+
+.logo-image {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.header-center {
+  flex: 1;
+  gap: 1rem;
+}
+
+.explora-wrapper {
+  position: relative;
+}
+
+.explora-button {
+  background: #111827;
+  border: 1px solid #1f2937;
+  color: #e5e7eb;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.explora-button:hover {
+  background: #1f2937;
+}
+
+.explora-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  display: none;
+  flex-direction: column;
+  min-width: 160px;
+  z-index: 20;
+}
+
+.explora-menu.active {
+  display: flex;
+}
+
+.explora-menu button {
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+  color: #e5e7eb;
+  cursor: pointer;
+  border-radius: 0.35rem;
+}
+
+.explora-menu button:hover {
+  background: #1f2937;
+}
+
+.search-wrapper {
+  flex: 1;
+}
+
+.search-input {
+  width: 80%;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #4b5563;
+  background: #020617;
+  color: #f9fafb;
+  font-size: 0.9rem;
+}
+
+.search-input::placeholder {
+  color: #6b7280;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.header-right {
+  gap: 0.5rem;
+  min-width: 90px;
+  justify-content: flex-end;
+}
+
+.icon-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #f9fafb;
+  padding: 0.25rem;
+  border-radius: 999px;
+}
+
+.icon-button:hover {
+  background: #111827;
+}
+.icon-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #6366f1;
+}
+
+/* Overlay & Sidebars */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 200;
+}
+
+.overlay.active {
+  display: block;
+}
+
+.overlay::backdrop {
+  background: rgba(0,0,0,0.3);
+}
+
+.overlay {
+  background: rgba(0,0,0,0.35);
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 320px;
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 2px 0 8px rgba(2,6,23,0.15);
+  transform: translateX(-100%);
+  transition: transform 240ms ease;
+  overflow-y: auto;
+}
+
+.sidebar.primary.open {
+  transform: translateX(0);
+}
+
+.sidebar.secondary {
+  /* Posicionada a la derecha de la primaria, pero cerrada se desplaza hacia la izquierda
+     (dentro del área de la primaria). Al abrir pasa a translateX(0) y parece salir desde la primaria. */
+  left: 320px; /* empieza después de la primaria */
+  transform: translateX(-100%); /* cerrada, desplazada hacia la izquierda dentro de la primaria */
+  width: 360px;
+  z-index: 210;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 240ms ease, opacity 200ms ease;
+}
+
+.sidebar.secondary.open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.close-btn,
+.back-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.category-list,
+.subcategory-list {
+  list-style: none;
+  padding: 0.5rem 0.5rem 2rem 0.5rem;
+  margin: 0;
+}
+
+.category-btn {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #111827;
+  cursor: pointer;
+}
+
+.category-btn:hover { background: #f3f4f6; }
+
+.subcategory-item {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+@media (max-width: 800px) {
+  .sidebar { width: 80vw; }
+  .sidebar.secondary { left: 80vw; width: 90vw; }
+}

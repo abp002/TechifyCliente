@@ -1,5 +1,49 @@
-# React + Vite
 
+
+1. Clona el repositorio y entra en la carpeta del frontend:
+
+```bash
+git clone <repo-url>
+cd <repo-folder>/frontend
+```
+
+2. Instala dependencias:
+
+```bash
+npm install
+```
+
+3. Arranca el servidor de desarrollo y expónlo en la red local para acceder desde otros dispositivos:
+
+```bash
+npm run dev -- --host
+```
+
+
+1. Desde `frontend/` genera la versión de producción:
+
+```bash
+npm run build
+```
+
+2. Sirve la carpeta `dist/` en un servidor estático. Opciones rápidas:
+
+```bash
+# Usar vite preview (simula servidor):
+npm run preview -- --host
+
+# O instalar serve (una sola vez) y servir la carpeta:
+npm install -g serve
+serve -s dist -l 5173
+```
+
+Después, abre `http://<IP-del-ordenador>:5173` desde el otro dispositivo.
+
+Notas y consejos:
+
+- Asegúrate de que el firewall permite conexiones entrantes en el puerto usado (por defecto 5173).
+- Si quieres exponer la app públicamente, despliega en Netlify/Vercel/GitHub Pages en lugar de exponer tu máquina.
+- Si usas `yarn` o `pnpm`, usa los comandos equivalentes (`yarn dev`, `pnpm dev`, etc.).
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
