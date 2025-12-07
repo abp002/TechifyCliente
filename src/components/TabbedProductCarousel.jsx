@@ -78,11 +78,7 @@ function TabbedProductCarousel({ id, tabs, productsByTab }) {
                   )}
                 </div>
 
-                {p.rating && (
-                  <p className="product-rating-line">
-                    {p.rating.toFixed(1)}/5 ⭐ {p.reviews} opiniones
-                  </p>
-                )}
+
               </div>
             </article>
           ))}

@@ -23,7 +23,7 @@ function ProductSection({ id, title, ctaLabel, products, variant = 'default' }) 
             </div>
 
             <div className="product-body">
-              <div className="product-rating">★★★★★</div>
+
               <h3 className="product-name">{p.name}</h3>
 
               <div className="product-prices">

@@ -1,63 +1,7 @@
 // src/pages/SmartphonesPage.jsx
+import { useState, useEffect } from 'react';
 import ProductsPage from '../components/ProductsPage';
-
-// Sample smartphone products for demonstration
-const SAMPLE_SMARTPHONES = [
-  {
-    id: 1,
-    name: 'iPhone 15 Pro',
-    price: 999,
-    originalPrice: 1099,
-    image: 'https://via.placeholder.com/250?text=iPhone+15+Pro',
-    rating: 4.8,
-    reviews: 234,
-  },
-  {
-    id: 2,
-    name: 'Samsung Galaxy S24',
-    price: 899,
-    originalPrice: 999,
-    image: 'https://via.placeholder.com/250?text=Galaxy+S24',
-    rating: 4.7,
-    reviews: 189,
-  },
-  {
-    id: 3,
-    name: 'Google Pixel 8',
-    price: 799,
-    originalPrice: 899,
-    image: 'https://via.placeholder.com/250?text=Pixel+8',
-    rating: 4.6,
-    reviews: 156,
-  },
-  {
-    id: 4,
-    name: 'Xiaomi 14 Ultra',
-    price: 699,
-    originalPrice: 799,
-    image: 'https://via.placeholder.com/250?text=Xiaomi+14',
-    rating: 4.5,
-    reviews: 127,
-  },
-  {
-    id: 5,
-    name: 'OnePlus 12',
-    price: 649,
-    originalPrice: 749,
-    image: 'https://via.placeholder.com/250?text=OnePlus+12',
-    rating: 4.6,
-    reviews: 142,
-  },
-  {
-    id: 6,
-    name: 'Motorola Edge 50',
-    price: 549,
-    originalPrice: 649,
-    image: 'https://via.placeholder.com/250?text=Motorola+Edge',
-    rating: 4.4,
-    reviews: 98,
-  },
-];
+import { getSmartphones } from '../services/productService';
 
 const SMARTPHONE_FILTERS = {
   brands: ['Apple', 'Samsung', 'Xiaomi', 'Google'],
@@ -76,16 +20,49 @@ const SMARTPHONE_QUICK_FILTERS = [
   { id: 'novedades', label: 'Novedades', image: '/img/quick/novedades.svg' },
 ];
 
-function SmartphonesPage({ products }) {
-  const allProducts = products && products.length > 0 ? products : SAMPLE_SMARTPHONES;
-  const featuredProducts = allProducts.slice(0, 6);
+function SmartphonesPage({ products: propProducts }) {
+  const [products, setProducts] = useState(propProducts || []);
+  const [loading, setLoading] = useState(!propProducts);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // If products are passed via props, don't fetch
+    if (propProducts) {
+      setLoading(false);
+      return;
+    }
+
+    const fetchSmartphones = async () => {
+      try {
+        setLoading(true);
+        const data = await getSmartphones();
+        setProducts(data);
+        setError(null);
+      } catch (err) {
+        console.error('Failed to fetch smartphones:', err);
+        setError('No se pudieron cargar los productos. Por favor, inténtalo de nuevo más tarde.');
+        // Fallback or empty state could be handled here
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSmartphones();
+  }, [propProducts]);
+
+  if (loading) {
+    return <div className="p-8 text-center">Cargando smartphones...</div>;
+  }
+
+  if (error) {
+    return <div className="p-8 text-center text-red-600">{error}</div>;
+  }
 
   return (
     <ProductsPage
       title="Smartphones"
       subtitle="Móviles para todos los bolsillos: gama de entrada, gama media, gama alta y reacondicionados."
-      products={allProducts}
-      featuredProducts={featuredProducts}
+      products={products}
       filtersConfig={SMARTPHONE_FILTERS}
       quickFilters={SMARTPHONE_QUICK_FILTERS}
     />

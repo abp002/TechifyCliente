@@ -6,13 +6,11 @@ function ProductsPage({
   title,
   subtitle,
   products,
-  featuredProducts,
   quickFilters,
   sortOptions,
   filtersConfig,
 }) {
   const safeProducts = Array.isArray(products) ? products : [];
-  const safeFeatured = Array.isArray(featuredProducts) ? featuredProducts : [];
   const safeQuickFilters = Array.isArray(quickFilters) ? quickFilters : [];
   const safeSortOptions = Array.isArray(sortOptions)
     ? sortOptions
@@ -52,17 +50,7 @@ function ProductsPage({
           </div>
         </div>
 
-        {/* Optional featured products that span full width, above filters */}
-        {safeFeatured.length > 0 && (
-          <div className="featured-products-row">
-            <ProductSection
-              id="featured-products"
-              title="Destacados"
-              ctaLabel={null}
-              products={safeFeatured}
-            />
-          </div>
-        )}
+        {/* Featured products removed: list now shows only the main products */}
       </header>
 
       {/* Content area: filters on the left, main content on the right */}
