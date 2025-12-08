@@ -89,3 +89,61 @@
     height: 260px;
   }
 }
+
+
+
+.hero-content {
+  position: absolute;
+  z-index: 10;
+  color: #fff;
+  max-width: 45%;
+}
+
+/* Slide 1: izquierda */
+.hero-content--left {
+  top: 7%;
+  left: 3%;
+  text-align: left;
+}
+
+/* Slide 2: derecha */
+.hero-content--right {
+  top: 20%;
+  right: 3%;
+  text-align: right;
+}
+
+/* Slide 3: centrado arriba */
+.hero-content--top-center {
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 1.2rem;
+}
+
+.hero-button {
+  background: #6366f1;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.hero-button:hover {
+  background: #4f46e5;
+}

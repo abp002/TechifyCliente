@@ -3,14 +3,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem; /* horizontal padding only, height fixed */
+  padding: 0 2rem;
+  /* horizontal padding only, height fixed */
   height: var(--header-height);
-  background: #0b1120;
-  color: #f9fafb;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   gap: 1.5rem;
   width: 100%;
   box-sizing: border-box;
-  position: fixed; /* fixed so it stays visible */
+  position: fixed;
+  /* fixed so it stays visible */
   top: 0;
   left: 0;
   right: 0;
@@ -56,9 +58,9 @@
 }
 
 .explora-button {
-  background: #111827;
-  border: 1px solid #1f2937;
-  color: #e5e7eb;
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-secondary);
+  color: var(--text-secondary);
   padding: 0.45rem 0.9rem;
   border-radius: 999px;
   font-size: 0.9rem;
@@ -66,15 +68,15 @@
 }
 
 .explora-button:hover {
-  background: #1f2937;
+  background: var(--bg-secondary);
 }
 
 .explora-menu {
   position: absolute;
   top: 110%;
   left: 0;
-  background: #111827;
-  border: 1px solid #1f2937;
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-secondary);
   border-radius: 0.5rem;
   padding: 0.4rem;
   display: none;
@@ -93,7 +95,7 @@
   text-align: left;
   padding: 0.4rem 0.6rem;
   font-size: 0.85rem;
-  color: #e5e7eb;
+  color: var(--text-secondary);
   cursor: pointer;
   border-radius: 0.35rem;
 }
@@ -111,8 +113,8 @@
   padding: 0.45rem 0.9rem;
   border-radius: 999px;
   border: 1px solid #4b5563;
-  background: #020617;
-  color: #f9fafb;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-size: 0.9rem;
 }
 
@@ -122,7 +124,7 @@
 
 .search-input:focus {
   outline: none;
-  border-color: #6366f1;
+  border-color: var(--accent-primary);
 }
 
 .header-right {
@@ -136,17 +138,18 @@
   border: none;
   cursor: pointer;
   font-size: 1.3rem;
-  color: #f9fafb;
+  color: var(--text-primary);
   padding: 0.25rem;
   border-radius: 999px;
 }
 
 .icon-button:hover {
-  background: #111827;
+  background: var(--bg-secondary);
 }
+
 .icon-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #6366f1;
+  box-shadow: 0 0 0 2px var(--accent-primary);
 }
 
 /* Overlay & Sidebars */
@@ -162,11 +165,11 @@
 }
 
 .overlay::backdrop {
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .overlay {
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
 }
 
 .sidebar {
@@ -174,9 +177,9 @@
   top: 0;
   bottom: 0;
   width: 320px;
-  background: #ffffff;
-  color: #111827;
-  box-shadow: 2px 0 8px rgba(2,6,23,0.15);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  box-shadow: 2px 0 8px rgba(2, 6, 23, 0.15);
   transform: translateX(-100%);
   transition: transform 240ms ease;
   overflow-y: auto;
@@ -189,8 +192,10 @@
 .sidebar.secondary {
   /* Posicionada a la derecha de la primaria, pero cerrada se desplaza hacia la izquierda
      (dentro del área de la primaria). Al abrir pasa a translateX(0) y parece salir desde la primaria. */
-  left: 320px; /* empieza después de la primaria */
-  transform: translateX(-100%); /* cerrada, desplazada hacia la izquierda dentro de la primaria */
+  left: 320px;
+  /* empieza después de la primaria */
+  transform: translateX(-100%);
+  /* cerrada, desplazada hacia la izquierda dentro de la primaria */
   width: 360px;
   z-index: 210;
   opacity: 0;
@@ -209,7 +214,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 1rem;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid var(--bg-secondary);
 }
 
 .sidebar-header h3 {
@@ -240,18 +245,26 @@
   text-align: left;
   padding: 0.75rem 1rem;
   font-size: 1rem;
-  color: #111827;
+  color: var(--text-primary);
   cursor: pointer;
 }
 
-.category-btn:hover { background: #f3f4f6; }
+.category-btn:hover {
+  background: var(--bg-secondary);
+}
 
 .subcategory-item {
   padding: 0.6rem 1rem;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid var(--bg-secondary);
 }
 
 @media (max-width: 800px) {
-  .sidebar { width: 80vw; }
-  .sidebar.secondary { left: 80vw; width: 90vw; }
+  .sidebar {
+    width: 80vw;
+  }
+
+  .sidebar.secondary {
+    left: 80vw;
+    width: 90vw;
+  }
 }
