@@ -1,51 +1,57 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './CategoryCarousel.css';
 
 const CATEGORIES = [
   {
     id: 'smartphones',
     name: 'Smartphones',
-    image: 'https://images.pexels.com/photos/47261/pexels-photo-47261.jpeg',
+    image: '/img/inicio/category/movil.png',
+    path: '/smartphones',
   },
   {
     id: 'tablets',
     name: 'Tablets',
-    image: 'https://images.pexels.com/photos/811587/pexels-photo-811587.jpeg',
+    image: '/img/inicio/category/tablet.png',
+    path: '/tablets',
   },
   {
     id: 'laptops',
     name: 'Portátiles',
-    image: 'https://images.pexels.com/photos/18105/pexels-photo.jpg',
+    image: '/img/inicio/category/portatil.png',
+    path: '/portatiles',
   },
   {
     id: 'desktops',
     name: 'Ordenadores',
-    image: 'https://images.pexels.com/photos/1714203/pexels-photo-1714203.jpeg',
+    image: '/img/inicio/category/pc.png',
+    path: '/ordenadores',
   },
   {
     id: 'monitors',
     name: 'Pantallas',
-    image: 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg',
+    image: '/img/inicio/category/monitor.png',
+    path:'/pantallas',
   },
   {
     id: 'peripherals',
     name: 'Periféricos',
-    image: 'https://images.pexels.com/photos/2115257/pexels-photo-2115257.jpeg',
+    image: '/img/inicio/category/perifericos.png',
   },
   {
     id: 'audio',
     name: 'Audio',
-    image: 'https://images.pexels.com/photos/3394664/pexels-photo-3394664.jpeg',
+    image: '/img/inicio/category/auricular.png',
   },
   {
     id: 'drones',
     name: 'Drones',
-    image: 'https://images.pexels.com/photos/1306699/pexels-photo-1306699.jpeg',
+    image: '/img/inicio/category/dron.png',
   },
   {
     id: 'smart-devices',
     name: 'Smart Devices',
-    image: 'https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg',
+    image: '/img/inicio/category/echo.png',
   },
 ];
 
@@ -72,12 +78,12 @@ function CategoryCarousel() {
         <div className="categories-track-wrapper">
           <div className="categories-track" ref={trackRef}>
             {CATEGORIES.map((cat) => (
-              <button key={cat.id} className="category-item">
+              <Link key={cat.id} to={cat.path || '#'} className="category-item">
                 <div className="category-circle">
                   <img src={cat.image} alt={cat.name} />
                 </div>
                 <span className="category-label">{cat.name}</span>
-              </button>
+              </Link>
             ))}
           </div>
         </div>

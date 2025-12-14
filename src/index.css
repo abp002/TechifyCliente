@@ -20,6 +20,8 @@ body,
 
 :root {
   --header-height: 56px;
+    --bg-primary: #ffffff; 
+
 }
 
 body {

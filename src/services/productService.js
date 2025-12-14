@@ -26,6 +26,15 @@ export async function getPortatiles() {
   const json = await res.json();
   return json.data;
 }
+
+export async function getPantallas() {
+  const res = await fetch(`${API_BASE_URL}/products?category=pantallas`);
+  if (!res.ok) {
+    throw new Error('Error al cargar pantallas');
+  }
+  const json = await res.json();
+  return json.data;
+}
 export async function getOrdenadores() {
   const res = await fetch(`${API_BASE_URL}/products?category=ordenadores`);
   if (!res.ok) {

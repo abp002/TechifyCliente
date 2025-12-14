@@ -28,7 +28,7 @@ import Portatiles from './pages/Portatiles';
 // import Xbox from './pages/Xbox';
 // import Switch from './pages/Switch';
 // import ConsolasPortatiles from './pages/ConsolasPortatiles';
-// import Monitores from './pages/Monitores';
+ import Pantallas from './pages/Pantallas';
 // import Tv from './pages/Tv';
 // import AccesoriosTv from './pages/AccesoriosTv';
 // import Proyeccion from './pages/Proyeccion';
@@ -46,6 +46,8 @@ function App() {
         <Route path="/tablets" element={<Tablets />} />
         <Route path="/portatiles" element={<Portatiles />} />
         <Route path="/ordenadores" element={<Ordenadores />} />
+        <Route path="/pantallas" element={<Pantallas />} />
+
 
 
         {/* <Route path="/ordenadores" element={<Ordenadores />} />
@@ -74,7 +76,6 @@ function App() {
         <Route path="/switch" element={<Switch />} />
         <Route path="/consolas-portatiles" element={<ConsolasPortatiles />} />
 
-        <Route path="/monitores" element={<Monitores />} />
         <Route path="/tv" element={<Tv />} />
         <Route path="/accesorios-tv" element={<AccesoriosTv />} />
         <Route path="/proyeccion" element={<Proyeccion />} /> */}
